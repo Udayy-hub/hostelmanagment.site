@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Management</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Hostel</h1>
+        <nav>
+            <ul>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="rooms">
+            <h2>Available Rooms</h2>
+            <div class="room">
+                <h3>Single Room</h3>
+                <p>Price: $50 per night</p>
+                <button>Book Now</button>
+            </div>
+            <div class="room">
+                <h3>Double Room</h3>
+                <p>Price: $80 per night</p>
+                <button>Book Now</button>
+            </div>
+            <div class="room">
+                <h3>Deluxe Room</h3>
+                <p>Price: $120 per night</p>
+                <button>Book Now</button>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Us</h2>
+            <p>We provide comfortable and affordable accommodation for travelers and students.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Hostel Management. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+}
+
+.room {
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    margin: 10px 0;
+    padding: 15px;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #35424a;
+    color: #ffffff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+class Student:
+    def __init__(self, name, room_number):
+        self.name = name
+        self.room_number = room_number
+
+class Hostel:
+    def __init__(self):
+        self.students = []
+        self.room_capacity = 10  # Example capacity
+
+    def add_student(self, name):
+        if len(self.students) < self.room_capacity:
+            room_number = len(self.students) + 1
+            new_student = Student(name, room_number)
+            self.students.append(new_student)
+            print(f"Student {name} added to room {room_number}.")
+        else:
+            print("No available rooms.")
+
+    def display_students(self):
+        if not self.students:
+            print("No students in the hostel.")
+            return
+        print("List of Students:")
+        for student in self.students:
+            print(f"Name: {student.name}, Room Number: {student.room_number}")
+
+    def check_availability(self):
+        available_rooms = self.room_capacity - len(self.students)
+        print(f"Available rooms: {available_rooms}")
+
+
+# Example usage
+if __name__ == "__main__":
+    hostel = Hostel()
+    
+    hostel.add_student("Alice")
+    hostel.add_student("Bob")
+    
+    hostel.display_students()
+    
+    hostel.check_availability()
+    
+    hostel.add_student("Charlie")
+    hostel.display_students()
